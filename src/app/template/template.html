@@ -16,6 +16,16 @@
 <img [src]="loading ? 'rotate.svg' : null" />
 <button (click)="prenderApagar()">Prender</button>
 
+<br />
+
+<input type="text" (keyup.enter)="keyup($event)" />
+
+<br />
+
+<h2>Template variable</h2>
+
+<input type="text" placeholder="Usuario" (keyup.enter)="capturaUsuario(templateUsuario)" #templateUsuario />
+
 <h1>Class Binding</h1>
 
 <button [class.verde]="esVerde" [class.rojo]="!esVerde">Verde</button>
@@ -26,3 +36,14 @@
 <button [style.backgroundColor]="esVerde ? 'green' : 'red'"
         [style.border]="esVerde ? '4px solid yellow' : ''">Estilo</button>
 
+
+<h1>Two way Binding</h1>
+
+<input type="text" placeholder="Usuario"
+        (keyup.enter)="actualizaUsuario(otroUsuario)"
+        [value]=usuario
+        #otroUsuario />
+<p>{{ usuario }}</p>
+
+<input type="text" placeholder="Usuario" [(ngModel)]=twoWayUsuario />
+<div>{{ twoWayUsuario }}</div>
