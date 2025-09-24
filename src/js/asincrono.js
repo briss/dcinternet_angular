@@ -51,8 +51,11 @@ const cursos = [
 ];
 
 
-function insertaCurso(curso) {
-  setTimeout(() => { cursos.push(curso) }, 2000);
+function insertaCurso(curso, callback) {
+  setTimeout(() => { 
+    cursos.push(curso);
+    callback();
+  }, 2000);
 }
 
 
@@ -74,5 +77,5 @@ insertaCurso({
   duracion: 32,
   descripcion: "Aprende a crear microservicios con Spring Boot implementando los Patrones de Diseño como Service Discover, Load Balancing, tracing, circuit break, etc.",
   imagen: "https://www.dcinternet.com.mx/images/Curso Microservicios Spring Boot.png",
-});
+}, leerCursos);
 leerCursos();
