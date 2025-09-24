@@ -41,6 +41,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-src/ts/decorador.js
-src/ts/signals.js
-src/ts/interfaces.js
+src/ts/*.js
