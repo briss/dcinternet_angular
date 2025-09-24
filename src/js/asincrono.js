@@ -1,4 +1,4 @@
-const cursos = [
+let cursos = [
   {
     id: 1,
     nombre: "JSE",
@@ -47,15 +47,21 @@ const cursos = [
     descripcion: "Aprende a crear microservicios con Spring Boot implementando los Patrones de Diseño como Service Discover, Load Balancing, tracing, circuit break, etc.",
     imagen: "https://www.dcinternet.com.mx/images/Curso Microservicios Spring Boot.png",
   },
-
 ];
 
 
-function insertaCurso(curso, callback) {
-  setTimeout(() => { 
-    cursos.push(curso);
-    callback();
-  }, 2000);
+function insertaCurso(curso) {
+  return new Promise((resuelve, rechaza) => {
+    setTimeout(() => {
+      // cursos.push(curso);
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring
+      cursos = [...cursos, curso]; // Tiene el mismo efecto que el push
+
+      let error = false;
+
+      !error ? resuelve(curso) : rechaza("Hubo un error al insertar");
+    }, 2000);
+  });
 }
 
 
@@ -77,5 +83,8 @@ insertaCurso({
   duracion: 32,
   descripcion: "Aprende a crear microservicios con Spring Boot implementando los Patrones de Diseño como Service Discover, Load Balancing, tracing, circuit break, etc.",
   imagen: "https://www.dcinternet.com.mx/images/Curso Microservicios Spring Boot.png",
-}, leerCursos);
+})
+  .then(leerCursos)
+  .catch(error => console.log(error));
+
 leerCursos();
