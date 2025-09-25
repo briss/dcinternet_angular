@@ -75,7 +75,7 @@ function leerCursos() {
   }, 1000)
 }
 
-
+/*
 insertaCurso({
   id: 7,
   nombre: "Linux",
@@ -86,5 +86,26 @@ insertaCurso({
 })
   .then(leerCursos)
   .catch(error => console.log(error));
+*/
+
+
+async function iniciar() {
+  try {
+    await insertaCurso({
+      id: 7,
+      nombre: "Linux",
+      categoria: "SO",
+      duracion: 32,
+      descripcion: "Aprende a crear microservicios con Spring Boot implementando los Patrones de Diseño como Service Discover, Load Balancing, tracing, circuit break, etc.",
+      imagen: "https://www.dcinternet.com.mx/images/Curso Microservicios Spring Boot.png",
+    });
+
+    leerCursos();
+  } catch(error) {
+    error => console.log(error);
+  }
+}
+
+//iniciar();
 
 leerCursos();
