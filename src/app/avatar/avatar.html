@@ -1,3 +1,5 @@
 <div class="card">
+    <p>Nombre: {{ persona.nombre }}</p>
     <img src="{{ imagen }}" width="{{ tamanio() }}" height="{{ tamanio() }}" />
+    <button (click)="enviar()">Enviar al padre</button>
 </div>

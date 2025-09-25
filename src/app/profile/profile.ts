@@ -19,4 +19,10 @@ export class Profile {
     nombre: 'Katsuko Saruhashi',
     imagenId: 'YfeOqp2'
   };
+  protected mensajeHijo:string|undefined;
+
+
+  recibirMensaje(event:string) {
+    this.mensajeHijo = event;
+  }
 }

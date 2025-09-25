@@ -1,4 +1,4 @@
-import { Component, input, Input } from '@angular/core';
+import { Component, input, Input, OnChanges, OnInit, output, SimpleChanges } from '@angular/core';
 import { Persona } from '../modelo/persona.modelo';
 
 @Component({
@@ -7,15 +7,39 @@ import { Persona } from '../modelo/persona.modelo';
   templateUrl: './avatar.html',
   styleUrl: './avatar.css'
 })
-export class Avatar {
+export class Avatar implements OnInit, OnChanges {
   @Input()
   persona:Persona = {
-    nombre: 'Briseida',
-    imagenId: 'YfeOqp2'
+    nombre: '',
+    imagenId: ''
   };
-  imagen:string = obtieneImagenUrl(this.persona);
-  //@Input() 
+  imagen:string = '';
+  //@Input()
   tamanio = input<number>();
+
+  mensaje = "Mensaje del hijo al padre";
+  evento = output<string>();
+
+  constructor() {
+    console.log("En el constructor");
+    console.log(this.persona.imagenId);
+    console.log("c" + this.persona.nombre);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("OnChanges");
+  }
+
+  ngOnInit(): void {
+    console.log("ngOnInit");
+    console.log("---->" + this.persona.imagenId);
+    this.imagen = obtieneImagenUrl(this.persona);
+    console.log("i ->" + this.persona.nombre);
+  }
+
+  enviar() {
+    this.evento.emit(this.mensaje);
+  }
 }
 
 

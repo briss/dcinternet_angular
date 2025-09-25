@@ -3,5 +3,6 @@
 <p><img [src]="alumno.imagen" /></p>
  -->
 <app-card>
-    <app-avatar [tamanio]="100" [persona]="persona" />
+    <app-avatar [tamanio]="100" [persona]="persona" (evento)="recibirMensaje($event)" />
+    <p>{{mensajeHijo}}</p>
 </app-card>
