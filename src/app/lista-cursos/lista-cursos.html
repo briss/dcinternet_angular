@@ -1,0 +1,16 @@
+<p>{{ miFecha | fecha }}</p>
+
+<!-- {{ cursos | json }} -->
+
+<table>
+    <tbody>
+        @for (curso of cursos; track curso.id) {
+            <div class="card">
+                <div>{{ curso.nombre | uppercase }}</div>
+                <img src="{{ curso.imagen }}" width="260" />
+                <div>{{ curso.descripcion | titlecase }}</div>
+                <div>{{ curso.duracion | currency }}</div>
+            </div>
+        }
+    </tbody>
+</table>
