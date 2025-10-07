@@ -1,0 +1,11 @@
+<p>hola-mundo works!</p>
+
+<button (click)="obtenerCursos()">Obtener cursos</button>
+
+<div>
+    <ul>
+        {{ observable$ | async }}
+    </ul>
+</div>
+
+<button (click)="terminarSuscripcion()">Desuscribirse</button>
