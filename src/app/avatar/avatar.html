@@ -2,4 +2,8 @@
     <p>Nombre: {{ persona.nombre }}</p>
     <img src="{{ imagen }}" width="{{ tamanio() }}" height="{{ tamanio() }}" />
     <button (click)="enviar()">Enviar al padre</button>
+
+    <br />
+    <span>{{ likes }}</span>
+    <button (click)="darLike()">Likes</button>
 </div>

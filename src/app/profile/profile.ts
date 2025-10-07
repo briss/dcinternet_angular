@@ -3,10 +3,11 @@ import { Alumno } from '../modelo/alumno.modelo';
 import { Persona } from '../modelo/persona.modelo';
 import { Card } from "../card/card";
 import { Avatar } from "../avatar/avatar";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
-  imports: [Card, Avatar],
+  imports: [Card, Avatar, FormsModule],
   templateUrl: './profile.html',
   styleUrl: './profile.css',
 })
@@ -20,6 +21,7 @@ export class Profile {
     imagenId: 'YfeOqp2'
   };
   protected mensajeHijo:string|undefined;
+  protected foto_tamanio = 100;
 
 
   recibirMensaje(event:string) {

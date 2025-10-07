@@ -1,4 +1,4 @@
-import { Component, input, Input, OnChanges, OnInit, output, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, input, Input, OnChanges, OnInit, output, SimpleChanges } from '@angular/core';
 import { Persona } from '../modelo/persona.modelo';
 
 @Component({
@@ -7,7 +7,7 @@ import { Persona } from '../modelo/persona.modelo';
   templateUrl: './avatar.html',
   styleUrl: './avatar.css'
 })
-export class Avatar implements OnInit, OnChanges {
+export class Avatar implements OnInit, OnChanges, DoCheck {
   @Input()
   persona:Persona = {
     nombre: '',
@@ -19,6 +19,7 @@ export class Avatar implements OnInit, OnChanges {
 
   mensaje = "Mensaje del hijo al padre";
   evento = output<string>();
+  likes:number = 1;
 
   constructor() {
     console.log("En el constructor");
@@ -27,11 +28,15 @@ export class Avatar implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("OnChanges");
+    console.log("Avatar.OnChanges");
+  }
+
+  ngDoCheck(): void {
+    console.log("Avatar.DoCheck");
   }
 
   ngOnInit(): void {
-    console.log("ngOnInit");
+    console.log("Avatar.ngOnInit");
     console.log("---->" + this.persona.imagenId);
     this.imagen = obtieneImagenUrl(this.persona);
     console.log("i ->" + this.persona.nombre);
@@ -39,6 +44,11 @@ export class Avatar implements OnInit, OnChanges {
 
   enviar() {
     this.evento.emit(this.mensaje);
+  }
+
+  darLike() {
+    this.likes++;
+    console.log("Likes: " + this.likes);
   }
 }
 

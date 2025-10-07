@@ -3,6 +3,8 @@
 <p><img [src]="alumno.imagen" /></p>
  -->
 <app-card>
-    <app-avatar [tamanio]="100" [persona]="persona" (evento)="recibirMensaje($event)" />
+    <app-avatar [tamanio]="foto_tamanio" [persona]="persona" (evento)="recibirMensaje($event)" />
     <p>{{mensajeHijo}}</p>
 </app-card>
+
+<input type="number" [(ngModel)]="foto_tamanio" />
