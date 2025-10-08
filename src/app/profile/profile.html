@@ -7,4 +7,13 @@
     <p>{{mensajeHijo}}</p>
 </app-card>
 
-<input type="number" [(ngModel)]="foto_tamanio" />
+<input type="number" [(ngModel)]="foto_tamanio" #fotoInput />
+
+<div>
+    <input placeholder="Nombre" #nombreInput >
+</div>
+
+
+<div>
+    <button (click)="mostrarTelefonos()">Telefonos</button>
+</div>
