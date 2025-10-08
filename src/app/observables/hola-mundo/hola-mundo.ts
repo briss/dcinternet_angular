@@ -1,5 +1,6 @@
 import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, of, Subscriber } from 'rxjs';
 
 @Component({
@@ -27,6 +28,7 @@ export class HolaMundo {
     }, 8000);
   })
   suscripcion:any;
+  signalForObservable = toSignal(this.observable$);
 
   obtenerCursos() {
     this.suscripcion = this.observable$.subscribe({

@@ -9,3 +9,14 @@
 </div>
 
 <button (click)="terminarSuscripcion()">Desuscribirse</button>
+
+<div>
+    <ul>
+        {{ numeros$ | async }}
+    </ul>
+</div>
+
+
+<div>
+    {{ signalForObservable() }}
+</div>
