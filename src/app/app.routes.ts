@@ -6,10 +6,12 @@ import { Card } from './card/card';
 import { ListaCursos } from './lista-cursos/lista-cursos';
 import { AfterContentPadre } from './hooks/after-content-padre/after-content-padre';
 import { HolaMundo } from './observables/hola-mundo/hola-mundo';
+import { CursoObservable } from './observables/curso-observable/curso-observable';
 
 export const routes: Routes = [
     { path: 'profile', component: Profile },
     { path: 'cursos', component: ListaCursos },
+    { path: 'cursosObservable', component: CursoObservable },
     { path: 'inicio', component: App },
     { path: 'card', component: Card },
     { path: 'afterPadre', component: AfterContentPadre },
