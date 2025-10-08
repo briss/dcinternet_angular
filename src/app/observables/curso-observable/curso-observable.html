@@ -1,0 +1,17 @@
+<p>curso-observable works!</p>
+
+<div>
+    <ul>
+        @for (curso of cursos$ | async; track curso.id) {
+            <li>{{ curso.nombre }} - {{ curso.descripcion }}</li>
+        }
+    </ul>
+</div>
+
+Numero de registros: {{ totalCursos }}
+
+<hr>
+
+<div>
+    {{ cursoSignal() | json }}
+</div>
