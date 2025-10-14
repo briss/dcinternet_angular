@@ -1,0 +1,19 @@
+<p>curso-resources works!</p>
+
+<div>
+    <ul>
+    @for (curso of cursosFiltro(); track curso.id) {
+        <li>{{curso.nombre}}</li>
+    }
+    @empty { No hay información de cursos }
+    </ul>
+</div>
+
+<hr>
+
+<div>
+    @for (otroCurso of cursosEmpty; track $index) {
+        <li>{{otroCurso}}</li>
+    }
+    @empty { No hay información de cursos }
+</div>
