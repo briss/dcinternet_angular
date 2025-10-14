@@ -1,0 +1,5 @@
+Buscar: <input type="text" [(ngModel)]="terminoBuscado" />
+
+<p>{{ terminoBuscado }}</p>
+
+<app-curso-resources [filtro]="terminoBuscado"></app-curso-resources>
