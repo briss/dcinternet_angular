@@ -1,16 +1,18 @@
-import { AfterContentChecked, AfterViewInit, Component, ElementRef, Signal, viewChild, ViewContainerRef } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, Component, ElementRef, inject, Signal, viewChild, ViewContainerRef } from '@angular/core';
 import { Alumno } from '../modelo/alumno.modelo';
 import { Persona } from '../modelo/persona.modelo';
 import { Card } from "../card/card";
 import { Avatar } from "../avatar/avatar";
 import { FormsModule } from '@angular/forms';
 import { ListaTelefonos } from '../lista-telefonos/lista-telefonos';
+import { SuscripcionService } from '../service/suscripcion.service';
 
 @Component({
   selector: 'app-profile',
   imports: [Card, Avatar, FormsModule],
   templateUrl: './profile.html',
   styleUrl: './profile.css',
+  providers: [SuscripcionService]
 })
 export class Profile implements AfterViewInit, AfterContentChecked {
 //  protected nombre = 'Briseida';
@@ -25,6 +27,9 @@ export class Profile implements AfterViewInit, AfterContentChecked {
   protected foto_tamanio = 100;
 
   protected nombre:Signal<ElementRef|undefined> = viewChild("nombreInput");
+
+  private suscripcionService = inject(SuscripcionService);
+
 
   constructor(private viewContainerRef:ViewContainerRef) {
   }
@@ -44,5 +49,9 @@ export class Profile implements AfterViewInit, AfterContentChecked {
   mostrarTelefonos() {
     this.viewContainerRef.clear();
     this.viewContainerRef.createComponent(ListaTelefonos);
+  }
+
+  subscribir(periodicidad: string, cantidad: number) {
+    this.suscripcionService.suscribir(periodicidad, cantidad);
   }
 }
