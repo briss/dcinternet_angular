@@ -26,4 +26,9 @@ export class CursoService {
     getCursosObservable():Observable<Curso[]> {
         return this.httpClient.get<Curso[]>(this.cursosUrl);
     }
+
+    registrar(curso:Curso) {
+        this.httpClient.post(this.cursosUrl, curso)
+            .subscribe(() => console.log("Curso registrado"));
+    }
 }

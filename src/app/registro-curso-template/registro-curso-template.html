@@ -1,0 +1,14 @@
+<p>registro-curso-template works!</p>
+
+<form (ngSubmit)="registrar($event, formRegistrar)" #formRegistrar="ngForm">
+    <input name="nombre" type="text" placeholder="Nombre" required (change)="obtieneValor(nombre)" #nombre="ngModel" ngModel />
+    @if(nombre.invalid && nombre.touched) { <span>Nombre requerido</span> }
+    <input name="categoria" type="text" placeholder="Categoría" ngModel />
+    <input name="duracion" type="number" placeholder="Duración" ngModel />
+    <input name="descripcion" type="text" placeholder="Descripción" ngModel />
+    <input name="imagen" type="text" placeholder="Imagen" ngModel />
+
+    
+
+    <button [disabled]="formRegistrar.invalid">Registrar</button>
+</form>
