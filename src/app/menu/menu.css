@@ -24,6 +24,7 @@ nav ul li {
 }
 
 nav ul li a {
+    color: white;
     text-decoration: none;
 }
 
@@ -51,7 +52,8 @@ nav ul li a:visited {
 }
 
 
-.navbar ul a.activebutton{
-    font-size: 1.2em;
+.navbar ul a.activo{
+    color: orange;
+    font-size: 1.6em;
     line-height: 0%;
 }
