@@ -1,5 +1,13 @@
-Buscar: <input type="text" [(ngModel)]="terminoBuscado" />
+<div class="container">
+    <div class="column left-column">
+        Buscar: <input type="text" [(ngModel)]="terminoBuscado" />
 
-<p>{{ terminoBuscado }}</p>
+        <p>{{ terminoBuscado }}</p>
 
-<app-curso-resources [filtro]="terminoBuscado"></app-curso-resources>
+        <app-curso-resources [filtro]="terminoBuscado"></app-curso-resources>
+    </div>
+
+    <div class="column right-column">
+        <app-registro-curso-template></app-registro-curso-template>
+    </div>
+</div>
