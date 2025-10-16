@@ -1,0 +1,10 @@
+@let curso = curso$ | async;
+
+@if (curso) {
+    <div class="card">
+        <div>{{ curso.nombre | uppercase}}</div>
+        <img src="{{ curso.imagen }}" width="360" />
+        <div>{{ curso.descripcion | titlecase }}</div>
+        <div>{{ curso.duracion | currency }}</div>
+    </div>
+}
