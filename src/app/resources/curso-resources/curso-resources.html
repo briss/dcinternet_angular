@@ -1,12 +1,16 @@
 <p>curso-resources works!</p>
 
 <div>
-    <ul>
+    <table>
     @for (curso of cursosFiltro(); track curso.id) {
-        <li>{{curso.nombre}}</li>
+        <tr>
+            <td><a routerLink="/buscador/{{curso.id}}">{{curso.nombre}}</a></td>
+            <td><button class="boton boton3" (click)="editarCurso(curso)">Editar</button></td>
+            <td><button class="boton boton2" (click)="borrarCurso(curso.id)">Borrar</button></td>
+        </tr>
     }
     @empty { No hay información de cursos }
-    </ul>
+    </table>
 </div>
 
 <hr>
