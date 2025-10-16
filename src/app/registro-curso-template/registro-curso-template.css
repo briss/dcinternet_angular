@@ -1,8 +1,39 @@
-input {
-    background-color: lightblue;
-    padding: .5em;
-    border-radius: 5px;
-    border: 1px solid #999;
+input{
+    padding: 10px;
+    font-size: 16px;
+    margin: 5px 0px;
+}
+
+input.ng-invalid{
+    border: 1px solid red;
+}
+
+textarea.ng-invalid{
+    border: 1px solid red;
+}
+
+button{
+    padding: 10px 30px;
+    background-color: rgb(14, 81, 104);
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+.deshabilitado{
+    padding: 10px 30px;
+    background-color: rgb(161, 163, 163);
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+
+}
+.error{
+    margin: 5px;
+    color:red
 }
 
 input.ng-invalid {
