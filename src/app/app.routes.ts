@@ -20,7 +20,7 @@ export const routes: Routes = [
     { path: 'card', component: Card },
     { path: 'afterPadre', component: AfterContentPadre },
     { path: 'observables', component: HolaMundo },
-    { path: 'buscador', component: Buscador },
+    { path: 'buscador', loadChildren: () => import('./curso.routes').then((r) => r.RUTAS_CURSO) },
     { path: 'registroTemplate', component: RegistroCursoTemplate },
 
     { path: '**', redirectTo: 'inicio' }
