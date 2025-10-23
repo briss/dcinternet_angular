@@ -2,34 +2,47 @@
 
 <form (ngSubmit)="registrar($event, formRegistrar)" #formRegistrar="ngForm">
     <div>
+        <input name="id" type="number" value="{{ cursoService.cursoActual().id }}"
+               #id />
+    </div>
+    <div>
         <input name="nombre" type="text" placeholder="Nombre"
-            required minlength="4" (change)="obtieneValor(nombre)"
-            #nombre="ngModel" ngModel />
-    @if(nombre.invalid && nombre.touched) {
+            required minlength="4"
+            value="{{ cursoService.cursoActual().nombre}}"
+            #nombre />
+<!--    @if(nombre.invalid && nombre.touched) {
         @if (nombre.hasError('minlength')) {
                 <span>Longitud mínima es 4</span>
         }
         @if (nombre.hasError('required')) {
                 <span>Nombre requerido</span>
         }
-    }
+    }-->
     </div>
     <div>
     <input name="categoria" type="text" placeholder="Categoría"
-            #categoria="ngModel" ngModel />
+                value="{{ cursoService.cursoActual().categoria }}"
+            #categoria />
     </div>
     <div>
     <input name="duracion" type="number" placeholder="Duración"
-            #duracion="ngModel" ngModel />
+                value="{{ cursoService.cursoActual().duracion }}"
+            #duracion />
     </div>
     <div>
     <input name="descripcion" type="text" placeholder="Descripción"
-            #descripcion="ngModel" ngModel />
+                value="{{ cursoService.cursoActual().descripcion }}"
+            #descripcion />
     </div>
     <div>
     <input name="imagen" type="text" placeholder="Imagen"
-            #imagen="ngModel" ngModel />
+                value="{{ cursoService.cursoActual().imagen }}"
+            #imagen />
     </div>
 
     <button [disabled]="formRegistrar.invalid">Registrar</button>
+
+
+    <button type="button" (click)="registrarSinNgModel(nombre.value, categoria.value, duracion.value, descripcion.value, imagen.value)">Registrar sin ngModel</button>
+    <button type="button" (click)="actualizar(id.value, nombre.value, categoria.value, duracion.value, descripcion.value, imagen.value)">Actualizar</button>
 </form>

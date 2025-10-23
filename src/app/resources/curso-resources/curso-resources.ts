@@ -25,10 +25,12 @@ export class CursoResources {
 
   private cursoService = inject(CursoService);
 
-  cursosRxResource = rxResource({
-    stream: () => this.cursoService.getCursosObservable(),
-    defaultValue: []
-  });
+  cursosRxResource = this.cursoService.cursosRxResource;
+
+//  cursosRxResource = rxResource({
+//    stream: () => this.cursoService.getCursosObservable(),
+//    defaultValue: []
+//  });
 
 //  cursosResource = resource({
 //    loader: () => fetch("https://www.dcinternet.com.mx/rino/cursos")
@@ -45,5 +47,6 @@ export class CursoResources {
 
   editarCurso(curso:Curso) {
     console.log(curso);
+    this.cursoService.cursoActual.set(curso);
   }
 }

@@ -1,0 +1,27 @@
+<p>registro-curso-reactivo works!</p>
+
+<form [formGroup]="forma" (ngSubmit)="enviar()">
+    <div>
+        <input type="text" placeholder="Nombre" formControlName="nombre" />
+    </div>
+    <div>
+        <input type="text" placeholder="Categoría" formControlName="categoria" />
+    </div>
+    <div>
+        <input type="number" placeholder="Duración" formControlName="duracion" />
+    </div>
+    <div>
+        <input type="text" placeholder="Descripción" formControlName="descripcion" />
+    </div>
+    <div>
+        <input type="text" placeholder="Imagen" formControlName="imagen" />
+    </div>
+
+    <button [disabled]="forma.invalid">Registrar</button>
+
+
+    <!--
+    <button type="button" (click)="registrarSinNgModel(nombre.value, categoria.value, duracion.value, descripcion.value, imagen.value)">Registrar sin ngModel</button>
+    <button type="button" (click)="actualizar(id.value, nombre.value, categoria.value, duracion.value, descripcion.value, imagen.value)">Actualizar</button>
+-->
+</form>

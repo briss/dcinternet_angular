@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule, NgForm, NgModel } from "@angular/forms";
 import { Curso } from '../modelo/curso.modelo';
 import { CursoService } from '../service/curso.service';
@@ -9,7 +9,7 @@ import { CursoService } from '../service/curso.service';
   templateUrl: './registro-curso-template.html',
   styleUrl: './registro-curso-template.css'
 })
-export class RegistroCursoTemplate {
+export class RegistroCursoTemplate implements OnInit {
 
   cursoService = inject(CursoService);
 
@@ -24,10 +24,38 @@ export class RegistroCursoTemplate {
 //    console.log(formRegistrar.value);
 
     let curso:Curso = formRegistrar.value;
+    console.log(curso);
+
     this.cursoService.registrar(curso);
   }
 
   obtieneValor(nombre:NgModel) {
     console.log(nombre);
+  }
+
+  ngOnInit(): void {
+  }
+
+  actualizar(id:string, nombre:string, categoria:string, duracion:string, descripcion:string, imagen:string) {
+    console.log("" + id + ", " + nombre);
+      this.cursoService.actualizar({
+        "id": Number(id),
+        "nombre": nombre,
+        "categoria": categoria,
+        "duracion": Number(duracion),
+        "descripcion": descripcion,
+        "imagen": imagen
+      });
+  }
+
+  registrarSinNgModel(nombre:string, categoria:string, duracion:string, descripcion:string, imagen:string) {
+    console.log("Entrando a registrarSinNgModel")
+      this.cursoService.registrar({
+        "nombre": nombre,
+        "categoria": categoria,
+        "duracion": Number(duracion),
+        "descripcion": descripcion,
+        "imagen": imagen
+      });
   }
 }

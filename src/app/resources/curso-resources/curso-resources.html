@@ -6,7 +6,9 @@
         <tr>
             <td><a routerLink="/buscador/{{curso.id}}">{{curso.nombre}}</a></td>
             <td><button class="boton boton3" (click)="editarCurso(curso)">Editar</button></td>
-            <td><button class="boton boton2" (click)="borrarCurso(curso.id)">Borrar</button></td>
+            @if (curso.id) {
+                <td><button class="boton boton2" (click)="borrarCurso(curso.id)">Borrar</button></td>
+            }
         </tr>
     }
     @empty { No hay información de cursos }

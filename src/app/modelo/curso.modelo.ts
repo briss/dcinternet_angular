@@ -1,5 +1,5 @@
 export type Curso = {
-    id:number,
+    id?:number,
     nombre:string,
     categoria:string,
     duracion:number,

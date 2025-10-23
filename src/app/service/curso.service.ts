@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal, Signal } from "@angular/core";
 import { Curso } from "../modelo/curso.modelo";
 import { Observable } from "rxjs";
+import { rxResource } from '@angular/core/rxjs-interop';
 
 @Injectable({
     providedIn: 'root'
@@ -11,13 +12,18 @@ export class CursoService {
     private cursosUrl = "https://www.dcinternet.com.mx/rino/cursos";
     private httpClient = inject(HttpClient);
 
-    private cursoActual = signal<Curso>({
+    cursoActual = signal<Curso>({
         id: 0,
         nombre: '',
         categoria: '',
         duracion: 0,
         descripcion: '',
         imagen: ''
+    });
+
+    cursosRxResource = rxResource({
+        stream: () => this.getCursosObservable(),
+        defaultValue: []
     });
 
     async getCursos():Promise<Curso[]> {
@@ -38,7 +44,12 @@ export class CursoService {
 
     registrar(curso:Curso) {
         this.httpClient.post(this.cursosUrl, curso)
-            .subscribe(() => console.log("Curso registrado"));
+            .subscribe(() => this.cursosRxResource.reload());
+    }
+
+    actualizar(curso:Curso) {
+        this.httpClient.put(this.cursosUrl, curso)
+            .subscribe(() => this.cursosRxResource.reload());
     }
 
     getCurso(id:string):Observable<Curso> {
@@ -46,8 +57,9 @@ export class CursoService {
     }
 
     borrarCurso(id:number):void {
-        this.httpClient.delete(this.cursosUrl + '/' + id).subscribe({
-            next: (response) => console.log(response)
-        });
+        this.httpClient.delete(this.cursosUrl + '/' + id)
+            .subscribe({
+                next: (response) => this.cursosRxResource.reload()
+            });
     }
 }
