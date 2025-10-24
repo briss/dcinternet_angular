@@ -2,22 +2,39 @@
 
 <form [formGroup]="forma" (ngSubmit)="enviar()">
     <div>
-        <input type="text" placeholder="Nombre" formControlName="nombre" />
+        <input name="id" type="number" readonly
+            value="{{ cursoService.cursoActual().id }}" />
     </div>
     <div>
-        <input type="text" placeholder="Categoría" formControlName="categoria" />
+        <input type="text" placeholder="Nombre" 
+            value="{{ cursoService.cursoActual().nombre}}"
+            formControlName="nombre" />
+        <span>{{ nombreError }}</span>
     </div>
     <div>
-        <input type="number" placeholder="Duración" formControlName="duracion" />
+        <input type="text" placeholder="Categoría" 
+            value="{{ cursoService.cursoActual().categoria }}"
+            formControlName="categoria" />
     </div>
     <div>
-        <input type="text" placeholder="Descripción" formControlName="descripcion" />
+        <input type="number" placeholder="Duración" 
+            value="{{ cursoService.cursoActual().duracion }}"
+            formControlName="duracion" />
+        <span class="error">{{ duracionError }}</span> 
     </div>
     <div>
-        <input type="text" placeholder="Imagen" formControlName="imagen" />
+        <input type="text" placeholder="Descripción" 
+            value="{{ cursoService.cursoActual().descripcion }}"
+            formControlName="descripcion" />
+    </div>
+    <div>
+        <input type="text" placeholder="Imagen" 
+            value="{{ cursoService.cursoActual().imagen }}"
+            formControlName="imagen" />
     </div>
 
-    <button [disabled]="forma.invalid">Registrar</button>
+    <button [class.deshabilitado]="forma.invalid">Registrar</button>
+    <button type="reset">Limpiar</button>
 
 
     <!--

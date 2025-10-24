@@ -26,7 +26,19 @@ export class RegistroCursoTemplate implements OnInit {
     let curso:Curso = formRegistrar.value;
     console.log(curso);
 
-    this.cursoService.registrar(curso);
+    if (this.cursoService.cursoActual().id !== 0) {
+      console.log("Actualizando");
+      this.cursoService.actualizar(curso);
+    } else {
+      console.log("Registrando")
+      this.cursoService.registrar({
+        "nombre": curso.nombre,
+        "categoria": curso.categoria,
+        "duracion": curso.duracion,
+        "descripcion": curso.descripcion,
+        "imagen": curso.imagen
+      });
+    }
   }
 
   obtieneValor(nombre:NgModel) {

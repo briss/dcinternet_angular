@@ -2,14 +2,14 @@
 
 <form (ngSubmit)="registrar($event, formRegistrar)" #formRegistrar="ngForm">
     <div>
-        <input name="id" type="number" value="{{ cursoService.cursoActual().id }}"
-               #id />
+        <input name="id" type="number" ngModel="{{ cursoService.cursoActual().id }}"
+               #id="ngModel" ngModel />
     </div>
     <div>
         <input name="nombre" type="text" placeholder="Nombre"
             required minlength="4"
-            value="{{ cursoService.cursoActual().nombre}}"
-            #nombre />
+            ngModel="{{ cursoService.cursoActual().nombre}}"
+            #nombre="ngModel" ngModel />
 <!--    @if(nombre.invalid && nombre.touched) {
         @if (nombre.hasError('minlength')) {
                 <span>Longitud mínima es 4</span>
@@ -21,23 +21,23 @@
     </div>
     <div>
     <input name="categoria" type="text" placeholder="Categoría"
-                value="{{ cursoService.cursoActual().categoria }}"
-            #categoria />
+                ngModel="{{ cursoService.cursoActual().categoria }}"
+            #categoria="ngModel" ngModel />
     </div>
     <div>
     <input name="duracion" type="number" placeholder="Duración"
-                value="{{ cursoService.cursoActual().duracion }}"
-            #duracion />
+                ngModel="{{ cursoService.cursoActual().duracion }}"
+            #duracion="ngModel" ngModel />
     </div>
     <div>
     <input name="descripcion" type="text" placeholder="Descripción"
-                value="{{ cursoService.cursoActual().descripcion }}"
-            #descripcion />
+                ngModel="{{ cursoService.cursoActual().descripcion }}"
+            #descripcion="ngModel" ngModel />
     </div>
     <div>
     <input name="imagen" type="text" placeholder="Imagen"
-                value="{{ cursoService.cursoActual().imagen }}"
-            #imagen />
+                ngModel="{{ cursoService.cursoActual().imagen }}"
+            #imagen="ngModel" ngModel />
     </div>
 
     <button [disabled]="formRegistrar.invalid">Registrar</button>
